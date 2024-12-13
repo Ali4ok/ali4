@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Профиль пользователя</title>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+  <header>
+    <div class="logo">Где Что?</div>
+    <nav>
+      <ul>
+        <li><a href="index.html">На главную</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Профиль</h2>
+    <div id="profile-content">
+      <p><strong>Логин:</strong> <span id="profile-username"></span></p>
+      <p><strong>Описание:</strong></p>
+      <textarea id="profile-description" rows="5" cols="50"></textarea><br><br>
+      <button id="save-profile">Сохранить</button>
+      <button id="logout">Выйти</button>
+    </div>
+    <p id="profile-error" style="color:red; display:none;">Вы не авторизованы</p>
+  </main>
+  
+  <footer>
+    <p>© 2024 Где Что?. Все права защищены.</p>
+    <p>Контакты: info@gde-chto.kz | +7 (XXX) XXX-XX-XX</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

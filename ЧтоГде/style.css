@@ -1,0 +1,267 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:wght@700&display=swap');
+
+html {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #fdfdfd;
+  color: #333;
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+/* Плавное появление всего контента */
+body {
+  opacity: 0;
+  animation: fadeIn 1.5s forwards;
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+main {
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+}
+
+/* Заголовки: используем Playfair Display для выразительности */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Playfair Display', serif;
+  color: #1f1f1f;
+  line-height: 1.2;
+  margin-top: 0;
+}
+
+/* Градиент и тени для h1,h2 */
+h1, h2 {
+  background: linear-gradient(90deg, #4c6ef5, #c2255c);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 2px 5px rgba(0,0,0,0.15);
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+h3 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+}
+
+p {
+  margin-bottom: 15px;
+}
+
+header {
+  background: #fff;
+  border-bottom: 1px solid #ddd;
+  padding: 20px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+header .logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: #2c3e50;
+}
+
+nav ul {
+  list-style: none;
+  margin: 10px 0 0 0;
+  padding: 0;
+  display: flex;
+  gap: 20px;
+}
+
+nav a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  transition: color 0.3s, border-bottom 0.3s;
+}
+
+nav a:hover {
+  color: #4c6ef5;
+  border-bottom: 2px solid #4c6ef5;
+}
+
+section {
+  margin-bottom: 60px;
+}
+
+/* Карточки с событиями */
+.event-list li {
+  background: #fff;
+  border-radius: 5px;
+  padding: 20px;
+  margin-bottom: 20px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.event-list li h3 {
+  font-family: 'Playfair Display', serif;
+  margin-bottom: 10px;
+  font-size: 1.4rem;
+  color: #2c3e50;
+}
+
+.event-list li:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.details-button {
+  display: inline-block;
+  margin-top: 10px;
+  background: #4c6ef5;
+  color: #fff;
+  padding: 8px 15px;
+  border-radius: 5px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+
+.details-button:hover {
+  background: #3b5bdb;
+}
+
+/* Советы */
+.tips-list li {
+  background: #fff;
+  border-radius: 5px;
+  padding: 15px;
+  margin-bottom: 10px;
+  font-style: italic;
+  border-left: 4px solid #4c6ef5;
+}
+
+/* Блок информации (погода и время) */
+.info-block {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+#weather, #time {
+  background: #fff;
+  border-radius: 5px;
+  padding: 20px;
+  flex: 1;
+  min-width: 200px;
+}
+
+#weather h3, #time h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+  color: #2c3e50;
+}
+
+/* Фильтры */
+.filter-bar {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  align-items: center;
+  flex-wrap: wrap;
+  font-weight: 500;
+}
+
+.filter-bar label {
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.filter-bar input, 
+.filter-bar select {
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  background: #fff;
+  border-top: 1px solid #ddd;
+  padding: 20px;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.lang-switcher select {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background: #f8f9fa;
+  font-weight: 500;
+}
+
+/* Детальная страница (details) */
+.event-info h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  color: #2c3e50;
+  margin-bottom: 15px;
+}
+.event-info p {
+  margin-bottom: 10px;
+}
+.ticket-button {
+  display: inline-block;
+  margin-top: 20px;
+  background: #c2255c;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+.ticket-button:hover {
+  background: #a61e4d;
+}
+
+/* Страница tickets */
+#ticket-info h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  nav ul {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .info-block {
+    flex-direction: column;
+  }
+
+  .lang-switcher {
+    margin-top: 10px;
+  }
+} 

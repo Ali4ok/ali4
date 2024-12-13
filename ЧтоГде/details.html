@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title data-i18n="event_details_page_title">Информация о мероприятии</title>
+  <link rel="stylesheet" href="styles.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet"/>
+</head>
+<body>
+  <header>
+    <div class="logo" data-i18n="header_logo">События Астаны</div>
+    <nav>
+      <ul>
+        <li><a href="index.html#map" data-i18n="nav_map">Карта</a></li>
+        <li><a href="index.html#events" data-i18n="nav_events">События</a></li>
+        <li><a href="index.html#weather-time" data-i18n="nav_weather_time">Погода и время</a></li>
+        <li><a href="index.html#tips" data-i18n="nav_tips">Советы</a></li>
+      </ul>
+    </nav>
+    <div class="lang-switcher">
+      <select id="lang-select">
+        <option value="kk">KZ</option>
+        <option value="ru" selected>RU</option>
+        <option value="en">EN</option>
+      </select>
+    </div>
+  </header>
+
+  <main>
+    <section id="event-details">
+      <h2 data-i18n="event_details_title">Информация о мероприятии</h2>
+      <div class="event-info"></div>
+      <a href="tickets.html" class="ticket-button" data-i18n="buy_tickets">Где купить билеты?</a>
+    </section>
+  </main>
+
+  <footer>
+    <p data-i18n="footer_rights">© 2024 События Астаны. Все права защищены.</p>
+    <p data-i18n="footer_contacts">Контакты: info@events-astana.kz | +7 (XXX) XXX-XX-XX</p>
+  </footer>
+
+  <script src="translations.js"></script>
+  <script>
+    let currentLanguage = 'ru';
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const langSelect = document.getElementById('lang-select');
+      langSelect.addEventListener('change', () => {
+          changeLanguage(langSelect.value);
+      });
+      changeLanguage('ru');
+
+      const params = new URLSearchParams(window.location.search);
+      const eventId = parseInt(params.get('id'), 10);
+      
+      fetch('events.json')
+        .then(res => res.json())
+        .then(events => {
+          const event = events.find(e => e.id === eventId);
+          if (event) {
+            displayEventDetails(event);
+          } else {
+            document.querySelector('.event-info').textContent = "Событие не найдено.";
+          }
+        });
+    });
+
+    function displayEventDetails(ev) {
+      let dateObj = new Date(ev.date);
+      let dateStr = dateObj.toLocaleString(currentLanguage === 'ru' ? 'ru-RU' : (currentLanguage === 'kk' ? 'kk-KZ' : 'en-US'), {
+          year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute:'2-digit'
+      });
+
+      const eventInfo = document.querySelector('.event-info');
+      eventInfo.innerHTML = `
+        <h3>${ev.title}</h3>
+        <p>${getTranslatedLabel("date")}: ${dateStr}</p>
+        <p>${getTranslatedLabel("address")}: ${ev.location}</p>
+        <p>${getTranslatedLabel("event_type")}: ${ev.type}</p>
+        <p>${ev.description}</p>
+      `;
+    }
+
+    function getTranslatedLabel(key) {
+      const dict = {
+        "date": {
+          "ru": "Дата",
+          "en": "Date",
+          "kk": "Күні"
+        },
+        "address": {
+          "ru": "Адрес",
+          "en": "Address",
+          "kk": "Мекенжай"
+        },
+        "event_type": {
+          "ru": "Тип мероприятия",
+          "en": "Event type",
+          "kk": "Іс-шара түрі"
+        }
+      };
+      return dict[key][currentLanguage];
+    }
+
+    function changeLanguage(lang) {
+      currentLanguage = lang;
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (translations[key] && translations[key][lang]) {
+            el.textContent = translations[key][lang];
+        }
+      });
+    }
+  </script>
+</body>
+</html>

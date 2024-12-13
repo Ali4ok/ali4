@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Вход в систему</title>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+  <header>
+    <div class="logo">Где Что?</div>
+  </header>
+
+  <main>
+    <h2>Авторизация</h2>
+    <form id="login-form">
+      <label>Логин: <input type="text" id="username" required></label><br><br>
+      <label>Пароль: <input type="password" id="password" required></label><br><br>
+      <button type="submit">Войти</button>
+    </form>
+    <p id="login-error" style="color:red; display:none;">Неверный логин или пароль</p>
+  </main>
+  
+  <footer>
+    <p>© 2024 Где Что?. Все права защищены.</p>
+    <p>Контакты: info@gde-chto.kz | +7 (XXX) XXX-XX-XX</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

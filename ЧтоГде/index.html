@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title data-i18n="site_title">Где Что?</title>
+  <link rel="stylesheet" href="styles.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet"/>
+</head>
+<body>
+  <header>
+    <div class="logo" data-i18n="header_logo">Где Что?</div>
+    <nav>
+      <ul id="nav-menu">
+        <li><a href="#map" data-i18n="nav_map">Карта</a></li>
+        <li><a href="#events" data-i18n="nav_events">События</a></li>
+        <li><a href="#weather-time" data-i18n="nav_weather_time">Погода и время</a></li>
+        <li><a href="#tips" data-i18n="nav_tips">Советы</a></li>
+      </ul>
+    </nav>
+    <div class="lang-switcher">
+      <select id="lang-select">
+        <option value="kk">KZ</option>
+        <option value="ru" selected>RU</option>
+        <option value="en">EN</option>
+      </select>
+    </div>
+  </header>
+
+  <main>
+    <section id="map">
+      <h2 data-i18n="map_title">Карта мероприятий</h2>
+      <div id="map-container" style="width:100%;height:400px;"></div>
+    </section>
+
+    <section id="events">
+      <h2 data-i18n="events_title">Предстоящие события</h2>
+      <div class="filter-bar">
+        <label for="filter-date" data-i18n="filter_by_date_label">Фильтр по дате:</label>
+        <input type="date" id="filter-date"/>
+
+        <label for="filter-type" data-i18n="filter_by_type_label">Фильтр по типу:</label>
+        <select id="filter-type">
+          <option value="" data-i18n="filter_all">Все</option>
+          <option value="Концерт" data-i18n="type_concert">Концерт</option>
+          <option value="Выставка" data-i18n="type_exhibition">Выставка</option>
+          <option value="Ярмарка" data-i18n="type_fair">Ярмарка</option>
+        </select>
+      </div>
+      <ul class="event-list"></ul>
+    </section>
+
+    <section id="weather-time">
+      <h2 data-i18n="weather_time_title">Погода и текущее время</h2>
+      <div class="info-block">
+        <div id="weather">
+          <h3 data-i18n="weather_title">Погода в Астане</h3>
+          <p id="temperature" data-i18n="weather_temperature">Температура: Загрузка...</p>
+          <p id="conditions" data-i18n="weather_conditions">Условия: Загрузка...</p>
+        </div>
+        <div id="time">
+          <h3 data-i18n="local_time_title">Местное время</h3>
+          <p id="local-time" data-i18n="local_time_loading">Загрузка...</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="tips">
+      <h2 data-i18n="tips_title">Полезные советы для гостей города</h2>
+      <ul class="tips-list">
+        <li data-i18n="tip_1">Посетите Байтерек – символ Астаны.</li>
+        <li data-i18n="tip_2">Одевайтесь по погоде: зимой очень холодно, берите теплые вещи.</li>
+        <li data-i18n="tip_3">Попробуйте местную кухню в ресторанах национальной кухни.</li>
+        <li data-i18n="tip_4">Используйте такси или общественный транспорт – город удобен для перемещения.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <p data-i18n="footer_rights">© 2024 Где Что?. Все права защищены.</p>
+    <p data-i18n="footer_contacts">Контакты: info@gde-chto.kz | +7 (XXX) XXX-XX-XX</p>
+  </footer>
+
+  <script src="https://api-maps.yandex.ru/2.1/?apikey=c07857ec-c40e-4ffc-bbe3-97f756e1ff55 &lang=ru_RU" type="text/javascript"></script>
+  <script src="translations.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
